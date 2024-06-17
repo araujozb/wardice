@@ -39,7 +39,11 @@ function jogar(){
 
     let result = document.getElementById("result");
     result.innerHTML = `<p>${pAtq > pDf ? atq : df} venceu!</p> <p>Dados do ${atq}: ${dadosAtq.join(', ')}</p> <p>Dados do ${df}: ${dadosDf.join(', ')}</p>`;
-
+	try {
+		fetch(`/${pAtq > pDf ? atq : df}`).catch(console.error);
+	} catch (ex) {
+		console.error(ex.message || ex.toString());
+	}
 }
 function GerarDado(qnt){
     let dado = [];
